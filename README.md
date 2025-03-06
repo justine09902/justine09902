@@ -9,5 +9,5 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 - High School: Angeles City National Trade School
 - Elementary: Tacondo Elementary School
 ## My projects
-- Midterm Lab Task 1:
+- Midterm Lab Task 1: [Date Cleaning and Preparation using Excel](Midterm%20Lab%20Task%201/task1.md)
 - Midterm Lab Task 2:
