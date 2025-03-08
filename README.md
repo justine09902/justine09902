@@ -10,4 +10,4 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 - Elementary: Tacondo Elementary School
 ## My projects
 - Midterm Lab Task 1: [Date Cleaning and Preparation using Excel](Midterm%20Lab%20Task%201/task1.md)
-- Midterm Lab Task 2:
+- Midterm Lab Task 2: [Date Cleaning and Transformation Using Power Query Editor](Midterm%20Lab%20Task%202/task1.md)
