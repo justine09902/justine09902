@@ -1,4 +1,67 @@
-let Source = Excel.Workbook(File.Contents("C:\Users\COMLAB\Downloads\Uncleaned_DS_jobs.xlsx"), null, true), Uncleaned_DS_jobs_Sheet = Source{[Item="Uncleaned_DS_jobs",Kind="Sheet"]}[Data], #"Promoted Headers" = Table.PromoteHeaders(Uncleaned_DS_jobs_Sheet, [PromoteAllScalars=true]), #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"index", Int64.Type}, {"Job Title", type text}, {"Salary Estimate", type text}, {"Job Description", type text}, {"Rating", type number}, {"Company Name", type text}, {"Location", type text}, {"Headquarters", type any}, {"Size", type any}, {"Founded", Int64.Type}, {"Type of ownership", type any}, {"Industry", type any}, {"Sector", type any}, {"Revenue", type any}, {"Competitors", type any}}), #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Changed Type", {{"index", each Text.BeforeDelimiter(Text.From(_, "en-PH"), "("), type text}}), #"Inserted Addition" = Table.AddColumn(#"Extracted Text Before Delimiter", "Min Sal", each Number.From([index]) + 101, type number), #"Inserted Text Between Delimiters" = Table.AddColumn(#"Inserted Addition", "Max Sal", each Text.BetweenDelimiters([Salary Estimate], "$", " ", 1, 0), type text), #"Added Custom" = Table.AddColumn(#"Inserted Text Between Delimiters", "Role Type", each if Text.Contains([Job Title], "Data Scientist") then "Data Scientist" else if Text.Contains([Job Title], "Data Analyst") then "Data Analyst" else if Text.Contains([Job Title], "Data Engineer") then "Data Engineer"
 
-else if Text.Contains([Job Title], "Machine Learning") then "Machine Learning Engineer" else "other"), #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Role Type", type text}}), #"Added Custom1" = Table.AddColumn(#"Changed Type1", "Custom", each if [Location]= "New Jersey" then ", NJ" else if [Location] = "Remote" then ", other" else if [Location]= "United States" then ", other" else if [Location]= "Texas" then ", TX" else if [Location]= "Patuxent" then ", MA" else if [Location]= "California" then ", CA" else if [Location]= "Utah" then ", UT" else [Location]), #"Split Column by Delimiter" = Table.SplitColumn(#"Added Custom1", "Custom", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Custom.1", "Custom.2"}), #"Changed Type2" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"Custom.1", type text}, {"Custom.2", type text}}), #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"Custom.1", "Location Correction Custom.1"}, {"Custom.2", "Location Correction Custom.2"}}), #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","Anne Rundell","MA",Replacer.ReplaceText,{"Location Correction Custom.2"}), #"Renamed Columns1" = Table.RenameColumns(#"Replaced Value",{{"Location Correction Custom.2", "State Abbreviations"}}), #"Inserted Text Before Delimiter" = Table.AddColumn(#"Renamed Columns1", "MinCompanySize", each Text.BeforeDelimiter([Size], " "), type text), #"Inserted Text Between Delimiters1" = Table.AddColumn(#"Inserted Text Before Delimiter", "MaxCompanySize", each Text.BetweenDelimiters([Size], " ", " ", 1, 0), type text), #"Split Column by Delimiter1" = Table.SplitColumn(#"Inserted Text Between Delimiters1", "MinCompanySize", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"MinCompanySize.1", "MinCompanySize.2"}), #"Changed Type3" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"MinCompanySize.1", type text}, {"MinCompanySize.2", type text}}), #"Split Column by Delimiter2" = Table.SplitColumn(#"Changed Type3", "MaxCompanySize", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"MaxCompanySize.1", "MaxCompanySize.2"}), #"Changed Type4" = Table.TransformColumnTypes(#"Split Column by Delimiter2",{{"MaxCompanySize.1", type text}, {"MaxCompanySize.2", type text}}), #"Removed Columns" = Table.RemoveColumns(#"Changed Type4",{"MinCompanySize.2", "MaxCompanySize.2"}), #"Renamed Columns2" = Table.RenameColumns(#"Removed Columns",{{"MinCompanySize.1", "MinCompanySize"}, {"MaxCompanySize.1", "MaxCompanySize"}}), #"Filtered Rows" = Table.SelectRows(#"Renamed Columns2", each ([Competitors] <> -1)), #"Filtered Rows1" = Table.SelectRows(#"Filtered Rows", each ([Industry] <> -1)), #"Filtered Rows2" = Table.SelectRows(#"Filtered Rows1", each ([Revenue] <> "Unknown / Non-Applicable")), #"Replaced Value1" = Table.ReplaceValue(#"Filtered Rows2","Rates","",Replacer.ReplaceText,{"Company Name"}), #"Removed Columns1" = Table.RemoveColumns(#"Replaced Value1",{"Job Description"}) in #"Removed Columns1"
+# Midterm Lab Task 2
+-  In this task, I cleaned and transformed a dataset using Power Query in Excel. I removed unnecessary characters, created new salary columns, categorized job roles, and standardized location data. I handled negative values, cleaned company info, and grouped the data by role, size, and state. Finally, I mapped state abbreviations and summarized the salary data.
 
+## Step by step process
+1. **Download the Dataset**: Download the file named "Uncleaned_DS_jobs.csv."
+2. **Load Data in Excel**: Open Excel -> Go to Data -> New Query -> Open File -> Choose "Text/CSV."
+3. **Edit Data**: Use Power Query Editor to make changes to the dataset.
+
+### Data Cleaning Tasks:
+4. **Salary Estimate Cleaning**:
+   - Remove all text after the "(" in the "Salary Estimate" column.
+   - Use the "Extract" function under the "Transform" menu to get text before the "(".
+
+5. **Create Min and Max Salary Columns**:
+   - Duplicate the "Salary Estimate" column.
+   - Create two new columns: "Min Sal" and "Max Sal" by selecting the "Salary Estimate" column and following the steps to add these columns based on examples.
+   
+6. **Create "Role Type" Column**:
+   - Add a new column to group job titles (e.g., Data Scientist, Data Analyst).
+   - Use a custom formula to categorize jobs, like “Data Scientist,” “Data Analyst,” etc.
+
+7. **Split Location Column**:
+   - Split the "Location" column using commas as delimiters.
+   - If there are no commas, use a custom column to standardize locations (e.g., New Jersey to "NJ").
+   - Split and rename the columns for location corrections and abbreviations.
+
+8. **Handle Negative Values**:
+   - Filter out negative values and clean the data for columns like "Competitors" and "Revenues."
+
+9. **Remove Unnecessary Columns**:
+   - Clean up the company names and descriptions, and remove unwanted columns.
+
+10. **Copy Applied Steps**:
+   - Go to Home -> Advanced Editor to copy the steps for your data cleaning.
+
+### Reshape and Group Data:
+1. **Duplicate Raw Data**:
+   - Duplicate the raw data and rename it as "Sal By Role Type dup."
+   - Choose columns for "Role Type," "Min Sal," and "Max Sal," and adjust them to currency format.
+   - Multiply the salary values by 1000, then group by "Role Type" and calculate the averages.
+
+2. **Create "Sal By Role Size"**:
+   - Duplicate the raw data and rename it as "Sal By Role Size ref."
+   - Choose "Size," "Min Sal," and "Max Sal," and repeat the same steps as above to get averages by "Size."
+
+3. **Map State Abbreviations**:
+   - Add state mapping data to the queries.
+   - Merge the state abbreviations to match full state names and clean up any blank or null values.
+
+4. **Group by State**:
+   - Create a reference for "Sal By State ref."
+   - Choose "State Full Name," "Min Sal," and "Max Sal," and group by "State Full Name" to get average salaries by state.
+
+5. **View Dependencies**:
+   - Go to View -> Dependencies to check the relationship between the queries and ensure they are correct.
+
+### Screenshots/Documentation of the cleaning process
+![Image](https://github.com/user-attachments/assets/402982a3-b571-4733-b644-c4ab6d0beee1)
+
+![Image](https://github.com/user-attachments/assets/df563d41-9f3e-404f-bb33-2c4a73fbe98b)
+
+![Image](https://github.com/user-attachments/assets/e1d089eb-9300-441e-bb52-7c1abeefe38c)
+
+![Image](https://github.com/user-attachments/assets/927d1efd-968a-41d3-937c-e34cd8da8210)
+
+![Image](https://github.com/user-attachments/assets/cbb1cbf7-de6b-4774-bc1f-323406ce9603)
