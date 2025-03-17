@@ -1,3 +1,7 @@
+
+![1](https://github.com/user-attachments/assets/dbc6365b-ae17-477e-a6ed-33e225d9c341)
+
+
 # EDM-Portfolio
 This portfolio holds the projects, done in the subject EDM, including Excel files and screenshots.
 
