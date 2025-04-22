@@ -16,6 +16,6 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 - Midterm Lab Task 3: [Creating Pivot Table and Dashboard:](https://github.com/justine09902/Lab-Task-3)
 
 ## My Projects In Finals
-- Finals Task 1 : 
+- Finals Task 1 : [My SQL Basics](https://github.com/justine09902/Final-Task-1/blob/main/README.mdhttps://github.com/justine09902/Final-Task-1/blob/main/README.md)
 - Finals Task 2: 
 - Finals Task 3:
