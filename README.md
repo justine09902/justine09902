@@ -8,7 +8,7 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 - College: City College of Angeles (BSIS)
 - High School: Angeles City National Trade School
 - Elementary: Tacondo Elementary School
-## My projects
+## My projects in midterms
 - Midterm Lab Task 1: [Date Cleaning and Preparation using Excel](https://github.com/justine09902/justine09902/blob/main/Midterm%20Lab%20Task%201/task1.md)
 - Midterm Lab Task 2: [Date Cleaning and Transformation Using Power Query](https://github.com/justine09902/justine09902/blob/main/Midterm%20Lab%20Task%202/task1.md)
 - Midterm Lab Task 3: [Creating Pivot Table and Dashboard:](https://github.com/justine09902/Lab-Task-3)
