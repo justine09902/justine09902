@@ -1,4 +1,7 @@
-# EDM-Portfolio
+[491379362_1311583713281873_6332626208070185892_n](https://github.com/user-attachments/assets/1f2e099e-025f-426b-b96d-b9ab58079b5d)
+
+# EDM-Portfolio!
+
 This portfolio holds the projects, done in the subject EDM, including Excel files and screenshots.
 
 ## About me
@@ -13,4 +16,4 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 - Midterm Lab Task 2: [Date Cleaning and Transformation Using Power Query](https://github.com/justine09902/justine09902/blob/main/Midterm%20Lab%20Task%202/task1.md)
 - Midterm Lab Task 3: [Creating Pivot Table and Dashboard:](https://github.com/justine09902/Lab-Task-3)
 
-## My Projects In Midterms
+## My Projects In Finals
