@@ -17,5 +17,5 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 
 ## My Projects In Finals
 - Finals Task 1: [MySQL Basics](https://justine09902.github.io/Finals-Lab-Task-1/)
-- Finals Task 2: 
+- Finals Task 2: [MySQL Database Creation](https://justine09902.github.io/Finals-Lab-Task-2/)
 - Finals Task 3:
