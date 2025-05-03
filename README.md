@@ -1,5 +1,4 @@
 ![by](https://github.com/user-attachments/assets/1f2e099e-025f-426b-b96d-b9ab58079b5d)
-
 # EDM-Portfolio!
 This portfolio holds the projects, done in the subject EDM, including Excel files and screenshots.
 
