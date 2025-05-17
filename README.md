@@ -19,4 +19,4 @@ Hi, my name is Justine Pineda. I'm from BSIS-I102, studying CCA. I'm passionate 
 - Finals Task 2: [MySQL Database Creation](https://justine09902.github.io/Finals-Lab-Task-2/)
 - Finals Task 3: [Table Manipulation](https://justine09902.github.io/Finals-Lab-Task-3/)
 - Finals Task 4: [Using MYSQL Clause](https://justine09902.github.io/Finals-Lab-Task-3.1/)
-- Finals Task 5: [Views, Stored Procedures and Functions]
+- Finals Task 5: [Views, Stored Procedures and Functions](https://justine09902.github.io/Finals-Task-5/)
